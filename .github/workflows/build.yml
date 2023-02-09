@@ -58,8 +58,7 @@ jobs:
                      --workdir $PWD \
                      docker.io/library/dart <<'EOF'
           set -e
-          apt-get update
-          apt-get install -y protobuf-compiler
+          curl -fsSL "https://github.com/bufbuild/buf/releases/latest/download/buf-$(uname -s)-$(uname -m).tar.gz" | tar -xzC /usr/local --strip-components 1
           dart pub get
           dart run grinder protobuf
           EOF
